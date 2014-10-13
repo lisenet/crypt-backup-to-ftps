@@ -1,4 +1,4 @@
-# Upload Encrypted (MySQL) Backups to Remote FTPS Server
+# crypt-backup-to-ftps
 
 The script dumps a MySQL database, gzips it and encrypts with ccrypt, calculates an MD5 hash of the backup file and then uploads it to a remote FTPS server.
 
