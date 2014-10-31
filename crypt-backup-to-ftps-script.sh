@@ -20,14 +20,14 @@ declare -r FILENAME="sql_`date +'%Y-%m-%d'`.sql.gz"
 declare -r ENCRYPTED="sql_`date +'%Y-%m-%d'`.sql.gz.cpt"
 declare -r ENCRYPTED_REMOTE="sql_`date +'%Y-%m-%d'`.sql.gz.cpt.remote"
 
-declare -r EMAIL_MSG_FAIL="$ENCRYPTED ftp upload failed, md5 hashes don't match!"
-declare -r EMAIL_FROM=backup-script@example.com
-declare -r EMAIL_TO=user@example.com
+declare -r EMAIL_MSG_FAIL=""$ENCRYPTED" ftp upload failed, md5 hashes don't match!"
+declare -r EMAIL_FROM="backup-script@example.com"
+declare -r EMAIL_TO="user@example.com"
 
 function sql-dump()
 {
 	echo "Dumping "$SQL_DB" database.";
-	mysqldump -u "$SQL_USER" -p"$SQL_PASS" "$SQL_DB" | gzip >./$FILENAME;
+	mysqldump -u "$SQL_USER" -p"$SQL_PASS" "$SQL_DB" | gzip >./"$FILENAME";
 
 	echo "Database dumped as "$FILENAME", encrypting the file.";
 	ccencrypt -fk "$CCRYPT_FILE" ./"$FILENAME";
